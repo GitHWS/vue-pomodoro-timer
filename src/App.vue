@@ -5,14 +5,14 @@
       <h1 class="timer__remaining-time">remainTime</h1>
     </div>
     <div class="timer__controls">
-      <button>
-        <icon-start class="timer__controls-icon" />
+      <button class="timer__controls-button">
+        <icon-start />
       </button>
-      <button>
-        <icon-reset class="timer__controls-icon" />
+      <button class="timer__controls-button">
+        <icon-reset />
       </button>
-      <button>
-        <icon-setting class="timer__controls-icon" />
+      <button class="timer__controls-button">
+        <icon-setting />
       </button>
     </div>
   </section>
@@ -51,8 +51,8 @@ import IconSetting from './components/icons/IconSetting.vue';
   gap: 3rem;
 }
 
-.timer__controls-icon {
-  width: 5rem;
-  height: 5rem;
+.timer__controls-button {
+  font-size: 5rem;
+  color: var(--white-color);
 }
 </style>
