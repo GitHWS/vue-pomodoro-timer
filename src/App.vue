@@ -5,14 +5,25 @@
       <h1 class="timer__remaining-time">remainTime</h1>
     </div>
     <div class="timer__controls">
-      <button>start/stop</button>
-      <button>reset</button>
-      <button>setting</button>
+      <button>
+        <icon-start class="timer__controls-icon" />
+      </button>
+      <button>
+        <icon-reset class="timer__controls-icon" />
+      </button>
+      <button>
+        <icon-setting class="timer__controls-icon" />
+      </button>
     </div>
   </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import IconStart from './components/icons/IconStart.vue';
+import IconPause from './components/icons/IconPause.vue';
+import IconReset from './components/icons/IconReset.vue';
+import IconSetting from './components/icons/IconSetting.vue';
+</script>
 
 <style>
 .timer {
@@ -38,5 +49,10 @@
 .timer__controls {
   display: flex;
   gap: 3rem;
+}
+
+.timer__controls-icon {
+  width: 5rem;
+  height: 5rem;
 }
 </style>
