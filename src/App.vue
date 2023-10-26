@@ -54,5 +54,10 @@ import IconSetting from './components/icons/IconSetting.vue';
 .timer__controls-button {
   font-size: 5rem;
   color: var(--white-color);
+  transition: color 0.2s;
+}
+
+html .timer__controls-button:hover {
+  color: var(--secondary-color);
 }
 </style>
