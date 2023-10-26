@@ -1,8 +1,8 @@
 <template>
   <section class="timer">
-    <div>
-      <h2>timerText</h2>
-      <h1>remainTime</h1>
+    <div class="timer__display">
+      <p class="timer__text">timerText</p>
+      <h1 class="timer__remaining-time">remainTime</h1>
     </div>
     <div class="timer__controls">
       <button>start/stop</button>
@@ -22,6 +22,17 @@
   justify-content: center;
   align-items: center;
   row-gap: 2rem;
+}
+
+.timer__display {
+  font-size: 10rem;
+  font-family: 'Zen Dots', cursive;
+  user-select: none;
+}
+
+.timer__text {
+  font-size: 3rem;
+  text-align: center;
 }
 
 .timer__controls {
