@@ -60,4 +60,8 @@ import IconSetting from './components/icons/IconSetting.vue';
 html .timer__controls-button:hover {
   color: var(--secondary-color);
 }
+
+html.rest-mode .timer__controls-button:hover {
+  color: var(--primary-color);
+}
 </style>
