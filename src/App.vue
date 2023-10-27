@@ -2,7 +2,7 @@
   <section class="timer">
     <div class="timer__display">
       <p class="timer__text">timerText</p>
-      <h1 class="timer__remaining-time">remainTime</h1>
+      <h1 class="timer__remaining-time">{{ remainTotalTime }}</h1>
     </div>
     <div class="timer__controls">
       <button class="timer__controls-button">
@@ -23,6 +23,19 @@ import IconStart from './components/icons/IconStart.vue';
 import IconPause from './components/icons/IconPause.vue';
 import IconReset from './components/icons/IconReset.vue';
 import IconSetting from './components/icons/IconSetting.vue';
+
+import { ref, computed } from 'vue';
+
+const min = ref(25);
+const sec = ref(60);
+
+const remainMin = computed(() =>
+  min.value < 10 ? `0${min.value}` : min.value
+);
+const remainSec = computed(() =>
+  sec.value < 10 ? `0${sec.value}` : sec.value
+);
+const remainTotalTime = computed(() => remainMin.value + ':' + remainSec.value);
 </script>
 
 <style>
