@@ -32,9 +32,23 @@ const sec = ref(60);
 const remainMin = computed(() =>
   min.value < 10 ? `0${min.value}` : min.value
 );
-const remainSec = computed(() =>
-  sec.value < 10 ? `0${sec.value}` : sec.value
-);
+
+const remainSec = computed(() => {
+  let currentSec;
+
+  if (sec.value < 10) {
+    currentSec = `0${sec.value}`;
+  } else {
+    currentSec = sec.value;
+  }
+
+  if (sec.value === 60) {
+    currentSec = '00';
+  }
+
+  return currentSec;
+});
+
 const remainTotalTime = computed(() => remainMin.value + ':' + remainSec.value);
 </script>
 
