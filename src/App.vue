@@ -5,7 +5,7 @@
       <h1 class="timer__remaining-time">{{ remainTotalTime }}</h1>
     </div>
     <div class="timer__controls">
-      <button class="timer__controls-button">
+      <button class="timer__controls-button" @click="startTimer">
         <icon-start />
       </button>
       <button class="timer__controls-button">
@@ -26,6 +26,7 @@ import IconSetting from './components/icons/IconSetting.vue';
 
 import { ref, computed } from 'vue';
 
+const timer = ref<number | null>(null);
 const min = ref(25);
 const sec = ref(60);
 
@@ -50,6 +51,17 @@ const remainSec = computed(() => {
 });
 
 const remainTotalTime = computed(() => remainMin.value + ':' + remainSec.value);
+
+const startTimer = () => {
+  timer.value = setInterval(() => {
+    sec.value -= 1;
+
+    if (sec.value < 0) {
+      sec.value = 59;
+      min.value -= 1;
+    }
+  }, 1000);
+};
 </script>
 
 <style>
