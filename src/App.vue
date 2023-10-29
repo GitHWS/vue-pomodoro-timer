@@ -27,38 +27,36 @@ import IconSetting from './components/icons/IconSetting.vue';
 import { ref, computed } from 'vue';
 
 const timer = ref<number | null>(null);
-const min = ref(25);
-const sec = ref(60);
+const min = ref<number | string>(25);
+const sec = ref<number | string>(60);
 
 const remainMin = computed(() =>
-  min.value < 10 ? `0${min.value}` : min.value
+  +min.value < 10 ? `0${min.value}` : min.value
 );
 
 const remainSec = computed(() => {
-  let currentSec;
-
-  if (sec.value < 10) {
-    currentSec = `0${sec.value}`;
+  if (+sec.value < 10) {
+    sec.value = `0${sec.value}`;
   } else {
-    currentSec = sec.value;
+    sec.value = sec.value;
   }
 
   if (sec.value === 60) {
-    currentSec = '00';
+    sec.value = '00';
   }
 
-  return currentSec;
+  return sec.value;
 });
 
 const remainTotalTime = computed(() => remainMin.value + ':' + remainSec.value);
 
 const startTimer = () => {
   timer.value = setInterval(() => {
-    sec.value -= 1;
+    sec.value = +sec.value - 1;
 
-    if (sec.value < 0) {
+    if (+sec.value < 0) {
       sec.value = 59;
-      min.value -= 1;
+      min.value = +min.value - 1;
     }
   }, 1000);
 };
