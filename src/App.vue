@@ -60,6 +60,12 @@ const startTimer = () => {
     }
   }, 1000);
 };
+
+const pauseTimer = () => {
+  if (timer.value) {
+    clearInterval(timer.value);
+  }
+};
 </script>
 
 <style>
