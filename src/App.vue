@@ -27,11 +27,13 @@ import IconSetting from './components/icons/IconSetting.vue';
 
 import { ref, computed } from 'vue';
 
+// Data
 const timer = ref<number | null>(null);
 const min = ref<number | string>(25);
 const sec = ref<number | string>(60);
 const isStart = ref(false);
 
+// Computed
 const remainMin = computed(() =>
   +min.value < 10 ? `0${min.value}` : min.value
 );
@@ -52,6 +54,7 @@ const remainSec = computed(() => {
 
 const remainTotalTime = computed(() => remainMin.value + ':' + remainSec.value);
 
+// Methods
 const startTimer = () => {
   isStart.value = true;
   timer.value = setInterval(() => {
