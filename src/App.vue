@@ -5,8 +5,9 @@
       <h1 class="timer__remaining-time">{{ remainTotalTime }}</h1>
     </div>
     <div class="timer__controls">
-      <button class="timer__controls-button" @click="startTimer">
-        <icon-start />
+      <button class="timer__controls-button">
+        <icon-start v-if="!isStart" @click="startTimer" />
+        <icon-pause v-else @click="pauseTimer" />
       </button>
       <button class="timer__controls-button">
         <icon-reset />
@@ -29,6 +30,7 @@ import { ref, computed } from 'vue';
 const timer = ref<number | null>(null);
 const min = ref<number | string>(25);
 const sec = ref<number | string>(60);
+const isStart = ref(false);
 
 const remainMin = computed(() =>
   +min.value < 10 ? `0${min.value}` : min.value
@@ -51,6 +53,7 @@ const remainSec = computed(() => {
 const remainTotalTime = computed(() => remainMin.value + ':' + remainSec.value);
 
 const startTimer = () => {
+  isStart.value = true;
   timer.value = setInterval(() => {
     sec.value = +sec.value - 1;
 
@@ -62,6 +65,7 @@ const startTimer = () => {
 };
 
 const pauseTimer = () => {
+  isStart.value = false;
   if (timer.value) {
     clearInterval(timer.value);
   }
