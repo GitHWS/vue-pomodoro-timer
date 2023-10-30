@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="modal-backdrop">
     <section class="modal">
       <header class="modal__header">
         <h3 class="modal__header-title">⚙️ Setting</h3>
@@ -28,6 +28,17 @@
 <script setup lang="ts"></script>
 
 <style scoped>
+.modal-backdrop {
+  display: grid;
+  place-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100%;
+}
+
 .modal {
   display: flex;
   flex-direction: column;
