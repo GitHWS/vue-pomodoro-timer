@@ -18,7 +18,9 @@
     </div>
   </section>
   <Teleport to="body">
-    <setting-modal />
+    <Transition name="setting-modal">
+      <setting-modal v-if="toggleSettingModal" />
+    </Transition>
   </Teleport>
 </template>
 
@@ -36,6 +38,7 @@ const timer = ref<number | null>(null);
 const min = ref<number | string>(25);
 const sec = ref<number | string>(60);
 const isStart = ref(false);
+const toggleSettingModal = ref(false);
 
 // Computed
 const remainMin = computed(() =>
@@ -91,6 +94,16 @@ const resetTimer = () => {
 </script>
 
 <style>
+.setting-modal-enter-active,
+.setting-modal-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.setting-modal-enter-from,
+.setting-modal-leave-to {
+  opacity: 0;
+}
+
 .timer {
   height: 100vh;
   display: flex;
