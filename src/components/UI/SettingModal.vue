@@ -5,7 +5,18 @@
         <h3 class="modal__header-title">⚙️ Setting</h3>
         <p class="modal__header-desc">You can set each time.</p>
       </header>
-      <div></div>
+      <div>
+        <form>
+          <div>
+            <label for="work-min">Work Time</label>
+            <input type="range" id="work-min" />
+          </div>
+          <div>
+            <label for="break-min">Break Time</label>
+            <input type="range" id="break-min" />
+          </div>
+        </form>
+      </div>
       <footer></footer>
     </section>
   </div>
