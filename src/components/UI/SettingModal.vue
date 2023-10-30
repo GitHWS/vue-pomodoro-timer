@@ -29,15 +29,14 @@
 
 <style scoped>
 .modal {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   width: 30vw;
   border-radius: 1rem;
   padding: 2rem;
   background-color: var(--white-color);
   color: var(--dark-color);
-}
-
-.modal__header {
-  margin-bottom: 2rem;
 }
 
 .modal__header-title {
