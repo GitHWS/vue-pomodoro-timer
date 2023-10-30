@@ -17,6 +17,7 @@
       </button>
     </div>
   </section>
+  <setting-modal />
 </template>
 
 <script setup lang="ts">
@@ -24,6 +25,7 @@ import IconStart from './components/icons/IconStart.vue';
 import IconPause from './components/icons/IconPause.vue';
 import IconReset from './components/icons/IconReset.vue';
 import IconSetting from './components/icons/IconSetting.vue';
+import SettingModal from './components/UI/SettingModal.vue';
 
 import { ref, computed } from 'vue';
 
