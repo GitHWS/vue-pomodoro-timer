@@ -5,15 +5,15 @@
         <h3 class="modal__header-title">⚙️ Setting</h3>
         <p class="modal__header-desc">You can set each time.</p>
       </header>
-      <div>
-        <form>
-          <div>
-            <label for="work-min">Work Time</label>
-            <input type="range" id="work-min" />
+      <div class="modal__form">
+        <form class="modal__form-inputs">
+          <div class="modal__form-input">
+            <label for="work-min" class="modal__form-label">Work Time</label>
+            <input type="range" id="work-min" class="modal__form-slider" />
           </div>
-          <div>
-            <label for="break-min">Break Time</label>
-            <input type="range" id="break-min" />
+          <div class="modal__form-input">
+            <label for="break-min" class="modal__form-label">Break Time</label>
+            <input type="range" id="break-min" class="modal__form-slider" />
           </div>
         </form>
       </div>
@@ -50,5 +50,22 @@
   margin: 0;
   font-size: 1.3rem;
   color: var(--gray-color);
+}
+
+.modal__form-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 2rem;
+  font-size: 1.6rem;
+}
+
+.modal__form-input {
+  display: flex;
+  column-gap: 2rem;
+}
+
+.modal__form-slider {
+  width: 30rem;
 }
 </style>
