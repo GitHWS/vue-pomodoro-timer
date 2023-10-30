@@ -9,7 +9,7 @@
         <icon-start v-if="!isStart" @click="startTimer" />
         <icon-pause v-else @click="pauseTimer" />
       </button>
-      <button class="timer__controls-button">
+      <button class="timer__controls-button" @click="resetTimer">
         <icon-reset />
       </button>
       <button class="timer__controls-button">
@@ -72,6 +72,17 @@ const pauseTimer = () => {
   if (timer.value) {
     clearInterval(timer.value);
   }
+};
+
+const resetTimer = () => {
+  isStart.value = false;
+  if (timer.value) {
+    clearInterval(timer.value);
+  }
+
+  // TODO 사용자 설정값이 있을 시 사용자 설정 값으로 반영 필요
+  min.value = 25;
+  sec.value = 60;
 };
 </script>
 
