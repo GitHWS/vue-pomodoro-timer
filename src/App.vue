@@ -19,7 +19,9 @@
   </section>
   <Teleport to="body">
     <Transition name="setting-modal">
-      <setting-modal v-if="isShowSettingModal" />
+      <setting-modal
+        v-if="isShowSettingModal"
+        @close-modal="closeSettingModal" />
     </Transition>
   </Teleport>
 </template>
@@ -94,6 +96,10 @@ const resetTimer = () => {
 
 const openSettingModal = () => {
   isShowSettingModal.value = true;
+};
+
+const closeSettingModal = () => {
+  isShowSettingModal.value = false;
 };
 </script>
 

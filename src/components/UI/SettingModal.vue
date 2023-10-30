@@ -19,13 +19,24 @@
       </div>
       <footer class="modal__footer">
         <button class="modal__button modal__button-apply">Apply</button>
-        <button class="modal__button modal__button-cancel">Cancel</button>
+        <button
+          class="modal__button modal__button-cancel"
+          @click="closeSettingModal">
+          Cancel
+        </button>
       </footer>
     </section>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+// Emits
+const emit = defineEmits(['close-modal']);
+
+const closeSettingModal = () => {
+  emit('close-modal');
+};
+</script>
 
 <style scoped>
 .modal-backdrop {
