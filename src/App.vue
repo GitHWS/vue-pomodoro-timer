@@ -12,14 +12,14 @@
       <button class="timer__controls-button" @click="resetTimer">
         <icon-reset />
       </button>
-      <button class="timer__controls-button">
+      <button class="timer__controls-button" @click="openSettingModal">
         <icon-setting />
       </button>
     </div>
   </section>
   <Teleport to="body">
     <Transition name="setting-modal">
-      <setting-modal v-if="toggleSettingModal" />
+      <setting-modal v-if="isShowSettingModal" />
     </Transition>
   </Teleport>
 </template>
@@ -38,7 +38,7 @@ const timer = ref<number | null>(null);
 const min = ref<number | string>(25);
 const sec = ref<number | string>(60);
 const isStart = ref(false);
-const toggleSettingModal = ref(false);
+const isShowSettingModal = ref(false);
 
 // Computed
 const remainMin = computed(() =>
@@ -90,6 +90,10 @@ const resetTimer = () => {
   // TODO 사용자 설정값이 있을 시 사용자 설정 값으로 반영 필요
   min.value = 25;
   sec.value = 60;
+};
+
+const openSettingModal = () => {
+  isShowSettingModal.value = true;
 };
 </script>
 
