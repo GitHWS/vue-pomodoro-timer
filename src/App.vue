@@ -17,7 +17,9 @@
       </button>
     </div>
   </section>
-  <setting-modal />
+  <Teleport to="body">
+    <setting-modal />
+  </Teleport>
 </template>
 
 <script setup lang="ts">
