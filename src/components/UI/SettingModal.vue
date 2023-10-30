@@ -17,7 +17,10 @@
           </div>
         </form>
       </div>
-      <footer></footer>
+      <footer>
+        <button>Apply</button>
+        <button>Cancel</button>
+      </footer>
     </section>
   </div>
 </template>
