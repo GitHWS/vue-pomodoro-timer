@@ -9,16 +9,28 @@
         <form class="modal__form-inputs">
           <div class="modal__form-input">
             <label for="work-min" class="modal__form-label">Work Time</label>
-            <input type="range" id="work-min" class="modal__form-slider" />
+            <input
+              type="range"
+              id="work-min"
+              class="modal__form-slider"
+              v-model="updatedWorkMin" />
           </div>
           <div class="modal__form-input">
             <label for="break-min" class="modal__form-label">Break Time</label>
-            <input type="range" id="break-min" class="modal__form-slider" />
+            <input
+              type="range"
+              id="break-min"
+              class="modal__form-slider"
+              v-model="updatedBreakMin" />
           </div>
         </form>
       </div>
       <footer class="modal__footer">
-        <button class="modal__button modal__button-apply">Apply</button>
+        <button
+          class="modal__button modal__button-apply"
+          @click="applyUpdateTime">
+          Apply
+        </button>
         <button
           class="modal__button modal__button-cancel"
           @click="closeSettingModal">
@@ -30,11 +42,31 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+
+const { currentWorkMin, currentBreakMin } = defineProps([
+  'currentWorkMin',
+  'currentBreakMin',
+]);
+
+const updatedWorkMin = ref(currentWorkMin);
+const updatedBreakMin = ref(currentBreakMin);
+
 // Emits
-const emit = defineEmits(['close-modal']);
+const emit = defineEmits(['close-modal', 'update-timer']);
 
 const closeSettingModal = () => {
   emit('close-modal');
+};
+
+const applyUpdateTime = () => {
+  closeSettingModal();
+  const updatedTime = {
+    work: updatedWorkMin.value,
+    break: updatedBreakMin.value,
+  };
+
+  emit('update-timer', updatedTime);
 };
 </script>
 

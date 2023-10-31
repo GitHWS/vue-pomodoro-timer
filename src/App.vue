@@ -21,7 +21,10 @@
     <Transition name="setting-modal">
       <setting-modal
         v-if="isShowSettingModal"
-        @close-modal="closeSettingModal" />
+        :currentWorkMin="currentWorkMin"
+        :currentBreakMin="currentBreakMin"
+        @close-modal="closeSettingModal"
+        @update-timer="updateTimer" />
     </Transition>
   </Teleport>
 </template>
@@ -40,6 +43,9 @@ const timer = ref<number | null>(null);
 const min = ref<number | string>(25);
 const sec = ref<number | string>(60);
 const isStart = ref(false);
+const currentWorkMin = ref<number | null>(null || 25);
+const currentBreakMin = ref<number | null>(null || 5);
+const currentMode = ref('work');
 const isShowSettingModal = ref(false);
 
 // Computed
@@ -92,6 +98,17 @@ const resetTimer = () => {
   // TODO 사용자 설정값이 있을 시 사용자 설정 값으로 반영 필요
   min.value = 25;
   sec.value = 60;
+};
+
+const updateTimer = (updatedMin: { work: string; break: string }) => {
+  currentWorkMin.value = +updatedMin.work;
+  currentBreakMin.value = +updatedMin.break;
+
+  if (currentMode.value === 'work') {
+    min.value = currentWorkMin.value;
+  } else {
+    min.value = currentBreakMin.value;
+  }
 };
 
 const openSettingModal = () => {
