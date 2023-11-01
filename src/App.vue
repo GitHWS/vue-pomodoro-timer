@@ -97,6 +97,7 @@ const resetTimer = () => {
   isStart.value = false;
   if (timer.value) {
     clearInterval(timer.value);
+    currentMode.value = 'work';
   }
 
   min.value = currentWorkMin.value || 25;
