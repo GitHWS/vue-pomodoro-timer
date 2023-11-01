@@ -1,5 +1,5 @@
 <template>
-  <section class="timer">
+  <section class="timer" :class="{ 'rest-mode': isBreakMode }">
     <div class="timer__display">
       <p class="timer__text">timerText</p>
       <h1 class="timer__remaining-time">{{ remainTotalTime }}</h1>
@@ -68,6 +68,10 @@ const remainSec = computed(() => {
 });
 
 const remainTotalTime = computed(() => remainMin.value + ':' + remainSec.value);
+
+const isBreakMode = computed(() =>
+  currentMode.value === 'break' ? true : false
+);
 
 // Methods
 const startTimer = () => {
@@ -157,6 +161,12 @@ watch(remainTotalTime, (value) => {
   justify-content: center;
   align-items: center;
   row-gap: 2rem;
+  background-color: var(--primary-color);
+  transition: background-color 0.3s;
+}
+
+.timer.rest-mode {
+  background-color: var(--secondary-color);
 }
 
 .timer__display {
@@ -181,11 +191,11 @@ watch(remainTotalTime, (value) => {
   transition: color 0.2s;
 }
 
-html .timer__controls-button:hover {
+.timer .timer__controls-button:hover {
   color: var(--secondary-color);
 }
 
-html.rest-mode .timer__controls-button:hover {
+.timer.rest-mode .timer__controls-button:hover {
   color: var(--primary-color);
 }
 </style>

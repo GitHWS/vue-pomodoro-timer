@@ -14,11 +14,6 @@ html {
   font-size: 62.5%;
   color: var(--white-color);
   transition: background-color 0.3s;
-  background-color: var(--primary-color);
-}
-
-html.rest-mode {
-  background-color: var(--secondary-color);
 }
 
 body {
