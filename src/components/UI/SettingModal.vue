@@ -21,6 +21,7 @@
             <datalist id="tickmarks">
               <option v-for="val in 6" :key="val" :value="val * 10" />
             </datalist>
+            <span>{{ convertedWorkMin }}</span>
           </div>
           <div class="modal__form-input">
             <label for="break-min" class="modal__form-label">Break Time</label>
@@ -36,6 +37,7 @@
             <datalist id="tickmarks">
               <option v-for="val in 6" :key="val" :value="val * 10" />
             </datalist>
+            <span>{{ convertedBreakMin }}</span>
           </div>
         </form>
       </div>
@@ -56,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 // Props
 const { currentWorkMin, currentBreakMin } = defineProps([
@@ -67,6 +69,23 @@ const { currentWorkMin, currentBreakMin } = defineProps([
 // Data
 const updatedWorkMin = ref(currentWorkMin);
 const updatedBreakMin = ref(currentBreakMin);
+
+// Computed
+const convertedWorkMin = computed(() => {
+  if (updatedWorkMin.value % 60 === 0) {
+    return updatedWorkMin.value / 60 + ' H';
+  } else {
+    return updatedWorkMin.value + ' M';
+  }
+});
+
+const convertedBreakMin = computed(() => {
+  if (updatedBreakMin.value % 60 === 0) {
+    return updatedBreakMin.value / 60 + ' H';
+  } else {
+    return updatedBreakMin.value + ' M';
+  }
+});
 
 // Emits
 const emit = defineEmits(['close-modal', 'update-timer']);
@@ -136,7 +155,7 @@ const applyUpdateTime = () => {
 }
 
 .modal__form-slider {
-  width: 30rem;
+  width: 50%;
 }
 
 .modal__footer {
