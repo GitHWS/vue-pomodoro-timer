@@ -12,16 +12,30 @@
             <input
               type="range"
               id="work-min"
+              step="5"
+              min="5"
+              max="60"
+              list="tickmarks"
               class="modal__form-slider"
               v-model="updatedWorkMin" />
+            <datalist id="tickmarks">
+              <option v-for="val in 6" :key="val" :value="val * 10" />
+            </datalist>
           </div>
           <div class="modal__form-input">
             <label for="break-min" class="modal__form-label">Break Time</label>
             <input
               type="range"
               id="break-min"
+              step="5"
+              min="5"
+              max="60"
+              list="tickmarks"
               class="modal__form-slider"
               v-model="updatedBreakMin" />
+            <datalist id="tickmarks">
+              <option v-for="val in 6" :key="val" :value="val * 10" />
+            </datalist>
           </div>
         </form>
       </div>
@@ -44,17 +58,20 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
+// Props
 const { currentWorkMin, currentBreakMin } = defineProps([
   'currentWorkMin',
   'currentBreakMin',
 ]);
 
+// Data
 const updatedWorkMin = ref(currentWorkMin);
 const updatedBreakMin = ref(currentBreakMin);
 
 // Emits
 const emit = defineEmits(['close-modal', 'update-timer']);
 
+// Methods
 const closeSettingModal = () => {
   emit('close-modal');
 };
