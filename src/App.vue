@@ -99,8 +99,7 @@ const resetTimer = () => {
     clearInterval(timer.value);
   }
 
-  // TODO 사용자 설정값이 있을 시 사용자 설정 값으로 반영 필요
-  min.value = 25;
+  min.value = currentWorkMin.value || 25;
   sec.value = 60;
 };
 
