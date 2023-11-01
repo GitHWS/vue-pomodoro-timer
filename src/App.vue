@@ -1,7 +1,7 @@
 <template>
   <section class="timer" :class="{ 'rest-mode': isBreakMode }">
     <div class="timer__display">
-      <p class="timer__text">timerText</p>
+      <p class="timer__text">{{ timerText }}</p>
       <h1 class="timer__remaining-time">{{ remainTotalTime }}</h1>
     </div>
     <div class="timer__controls">
@@ -49,6 +49,10 @@ const currentMode = ref('work');
 const isShowSettingModal = ref(false);
 
 // Computed
+const timerText = computed(() =>
+  currentMode.value === 'work' ? 'FOCUS' : 'TAKE A BREAK'
+);
+
 const remainMin = computed(() =>
   +min.value < 10 ? `0${min.value}` : min.value
 );
