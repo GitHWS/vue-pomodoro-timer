@@ -36,7 +36,7 @@ import IconReset from './components/icons/IconReset.vue';
 import IconSetting from './components/icons/IconSetting.vue';
 import SettingModal from './components/UI/SettingModal.vue';
 
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 
 // Data
 const timer = ref<number | null>(null);
@@ -118,6 +118,25 @@ const openSettingModal = () => {
 const closeSettingModal = () => {
   isShowSettingModal.value = false;
 };
+
+// Watch
+watch(remainTotalTime, (value) => {
+  if (value === '00:00') {
+    pauseTimer();
+
+    switch (currentMode.value) {
+      case 'work':
+        currentMode.value = 'break';
+        min.value = +currentBreakMin.value!;
+        break;
+      case 'break':
+        currentMode.value = 'work';
+        min.value = +currentWorkMin.value!;
+        break;
+    }
+    startTimer();
+  }
+});
 </script>
 
 <style>
