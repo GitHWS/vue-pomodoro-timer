@@ -122,7 +122,7 @@ const applyUpdateTime = () => {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  width: 30vw;
+  width: 40vw;
   border-radius: 1rem;
   padding: 2rem;
   background-color: var(--white-color);
