@@ -117,6 +117,8 @@ const updateTimer = (updatedMin: { work: string; break: string }) => {
   } else {
     min.value = currentBreakMin.value;
   }
+
+  resetTimer();
 };
 
 const openSettingModal = () => {
