@@ -19,6 +19,7 @@ html {
 body {
   margin: 0;
   font-family: sans-serif;
+  -webkit-app-region: drag;
 }
 
 h1 {
@@ -32,4 +33,5 @@ button {
   border: none;
   border-radius: 0;
   cursor: pointer;
+  -webkit-app-region: no-drag;
 }

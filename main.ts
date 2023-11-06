@@ -5,6 +5,8 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 300,
     height: 400,
+    titleBarStyle: 'hidden',
+    trafficLightPosition: { x: 10, y: 10 },
     webPreferences: {
       preload: path.join(__dirname, 'preload.ts'),
     },
