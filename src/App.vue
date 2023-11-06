@@ -176,13 +176,13 @@ watch(remainTotalTime, (value) => {
 }
 
 .timer__display {
-  font-size: 10rem;
+  font-size: 3.5rem;
   font-family: 'Zen Dots', cursive;
   user-select: none;
 }
 
 .timer__text {
-  font-size: 3rem;
+  font-size: 2rem;
   text-align: center;
 }
 
@@ -192,7 +192,7 @@ watch(remainTotalTime, (value) => {
 }
 
 .timer__controls-button {
-  font-size: 5rem;
+  font-size: 3.5rem;
   color: var(--white-color);
   transition: color 0.2s;
 }
