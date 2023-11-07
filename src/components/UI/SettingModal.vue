@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-backdrop">
+  <div class="modal-backdrop" @click="closeSettingModal">
     <section class="modal">
       <header class="modal__header">
         <h3 class="modal__header-title">⚙️ Setting</h3>
