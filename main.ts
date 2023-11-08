@@ -3,7 +3,7 @@ const path = require('node:path');
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
-    width: 300,
+    width: 500,
     height: 400,
     titleBarStyle: 'hidden',
     trafficLightPosition: { x: 10, y: 10 },

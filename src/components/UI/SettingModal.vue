@@ -144,7 +144,7 @@ const applyUpdateTime = () => {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  width: 40vw;
+  width: 70vw;
   border-radius: 1rem;
   padding: 2rem;
   background-color: var(--white-color);
