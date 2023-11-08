@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-backdrop" @click="closeSettingModal">
+  <div class="modal-backdrop" @click.stop="closeSettingModal">
     <section class="modal">
       <header class="modal__header">
         <h3 class="modal__header-title">⚙️ Setting</h3>
@@ -21,7 +21,7 @@
             <datalist id="tickmarks">
               <option v-for="val in 6" :key="val" :value="val * 10" />
             </datalist>
-            <span>{{ convertedWorkMin }}</span>
+            <span class="modal__form-cvtMin">{{ convertedWorkMin }}</span>
           </div>
           <div class="modal__form-input">
             <label for="break-min" class="modal__form-label">Break Time</label>
@@ -37,7 +37,7 @@
             <datalist id="tickmarks">
               <option v-for="val in 6" :key="val" :value="val * 10" />
             </datalist>
-            <span>{{ convertedBreakMin }}</span>
+            <span class="modal__form-cvtMin">{{ convertedBreakMin }}</span>
           </div>
         </form>
       </div>
@@ -129,6 +129,10 @@ const applyUpdateTime = () => {
   color: var(--dark-color);
 }
 
+.modal__header {
+  user-select: none;
+}
+
 .modal__header-title {
   font-size: 3rem;
   margin-top: 0;
@@ -152,6 +156,11 @@ const applyUpdateTime = () => {
 .modal__form-input {
   display: flex;
   column-gap: 2rem;
+}
+
+.modal__form-label,
+.modal__form-cvtMin {
+  user-select: none;
 }
 
 .modal__form-slider {
