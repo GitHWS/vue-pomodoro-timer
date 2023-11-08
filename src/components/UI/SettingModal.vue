@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-backdrop" @click.stop="closeSettingModal">
+  <div class="modal-backdrop" ref="backdrop" @click="closeSettingModal">
     <section class="modal">
       <header class="modal__header">
         <h3 class="modal__header-title">⚙️ Setting</h3>
@@ -17,6 +17,7 @@
               max="60"
               list="tickmarks"
               class="modal__form-slider"
+              @click.stop
               v-model="updatedWorkMin" />
             <datalist id="tickmarks">
               <option v-for="val in 6" :key="val" :value="val * 10" />
@@ -33,6 +34,7 @@
               max="60"
               list="tickmarks"
               class="modal__form-slider"
+              @click.stop
               v-model="updatedBreakMin" />
             <datalist id="tickmarks">
               <option v-for="val in 6" :key="val" :value="val * 10" />
@@ -44,11 +46,13 @@
       <footer class="modal__footer">
         <button
           class="modal__button modal__button-apply"
+          ref="modalApplyBtn"
           @click="applyUpdateTime">
           Apply
         </button>
         <button
           class="modal__button modal__button-cancel"
+          ref="modalCancelBtn"
           @click="closeSettingModal">
           Cancel
         </button>
@@ -58,7 +62,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 
 // Props
 const { currentWorkMin, currentBreakMin } = defineProps([
@@ -67,6 +71,16 @@ const { currentWorkMin, currentBreakMin } = defineProps([
 ]);
 
 // Data
+const backdrop = ref<HTMLDivElement | null>(null);
+const modalApplyBtn = ref<HTMLButtonElement | null>(null);
+const modalCancelBtn = ref<HTMLButtonElement | null>(null);
+
+onMounted(() => {
+  backdrop.value = backdrop.value;
+  modalApplyBtn.value = modalApplyBtn.value;
+  modalCancelBtn.value = modalCancelBtn.value;
+});
+
 const updatedWorkMin = ref(currentWorkMin);
 const updatedBreakMin = ref(currentBreakMin);
 
@@ -91,8 +105,16 @@ const convertedBreakMin = computed(() => {
 const emit = defineEmits(['close-modal', 'update-timer']);
 
 // Methods
-const closeSettingModal = () => {
-  emit('close-modal');
+const closeSettingModal = (event?: Event) => {
+  if (event) {
+    if (
+      event.target === backdrop.value ||
+      event.target === modalApplyBtn.value ||
+      event.target === modalCancelBtn.value
+    ) {
+      emit('close-modal');
+    }
+  }
 };
 
 const applyUpdateTime = () => {
@@ -165,6 +187,7 @@ const applyUpdateTime = () => {
 
 .modal__form-slider {
   width: 50%;
+  -webkit-app-region: no-drag;
 }
 
 .modal__footer {
