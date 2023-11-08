@@ -138,6 +138,7 @@ const applyUpdateTime = () => {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100vw;
   height: 100%;
+  -webkit-app-region: no-drag;
 }
 
 .modal {
