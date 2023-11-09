@@ -3,6 +3,7 @@ const path = require('node:path');
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
+    icon: './src/assets/icons/icon.icns',
     width: 500,
     height: 400,
     titleBarStyle: 'hidden',
