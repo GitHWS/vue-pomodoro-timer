@@ -147,6 +147,19 @@ watch(remainTotalTime, (value) => {
     startTimer();
   }
 });
+
+watch(currentMode, (value) => {
+  Notification.requestPermission().then((perm) => {
+    if (perm === 'granted') {
+      new Notification('Vue-Pomodoro-timer', {
+        body:
+          value === 'work'
+            ? `Let's work hard for ${currentWorkMin.value} minutes!`
+            : `Take ${currentBreakMin.value} minutes to relax!`,
+      });
+    }
+  });
+});
 </script>
 
 <style>
