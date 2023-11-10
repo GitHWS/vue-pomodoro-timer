@@ -1,6 +1,7 @@
 module.exports = {
   packagerConfig: {
     asar: true,
+    icon: './src/assets/icons/icon',
   },
   rebuildConfig: {},
   makers: [
@@ -16,7 +17,7 @@ module.exports = {
       name: '@electron-forge/maker-dmg',
       config: {
         name: 'vue-pomodoro-timer',
-        icon: 'src/assets/icons/icon.icns',
+        icon: './src/assets/icons/icon.icns',
         overwirte: true,
         format: 'ULFO',
       },
