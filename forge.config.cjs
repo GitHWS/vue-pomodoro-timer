@@ -1,19 +1,37 @@
 module.exports = {
   packagerConfig: {
     asar: true,
-    icon: './src/assets/icons/icon',
   },
   rebuildConfig: {},
   makers: [
     {
+      name: '@electron-forge/maker-squirrel',
+      config: {},
+    },
+    {
       name: '@electron-forge/maker-zip',
-      platforms: ['darwin', 'linux'],
+      platforms: ['darwin'],
     },
     {
       name: '@electron-forge/maker-dmg',
       config: {
+        name: 'vue-pomodoro-timer',
+        icon: 'src/assets/icons/icon.icns',
+        overwirte: true,
         format: 'ULFO',
-        icon: './src/assets/icons/icon.icns',
+      },
+    },
+  ],
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: 'GitHWS',
+          name: 'vue-pomodoro-timer',
+        },
+        prerelease: false,
+        draft: true,
       },
     },
   ],
