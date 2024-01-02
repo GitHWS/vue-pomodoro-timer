@@ -94,6 +94,7 @@ const pauseTimer = () => {
   isStart.value = false;
   if (timer.value) {
     clearInterval(timer.value);
+    timer.value = null;
   }
 };
 
@@ -101,6 +102,7 @@ const resetTimer = () => {
   isStart.value = false;
   if (timer.value) {
     clearInterval(timer.value);
+    timer.value = null;
     currentMode.value = 'work';
   }
 
