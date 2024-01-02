@@ -87,7 +87,7 @@ const startTimer = () => {
   timer.value = setInterval(() => {
     sec.value = +sec.value - 1;
 
-    if (+sec.value < 0) {
+    if (sec.value === 59 || sec.value < 0) {
       sec.value = 59;
       min.value = +min.value - 1;
     }
