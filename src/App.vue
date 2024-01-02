@@ -40,8 +40,8 @@ import { ref, computed, watch } from 'vue';
 
 // Data
 const timer = ref<number | null>(null);
-const min = ref<number | string>(25);
-const sec = ref<number | string>(60);
+const min = ref(25);
+const sec = ref(60);
 const isStart = ref(false);
 const currentWorkMin = ref<number | null>(null || 25);
 const currentBreakMin = ref<number | null>(null || 5);
@@ -53,22 +53,26 @@ const timerText = computed(() =>
   currentMode.value === 'work' ? 'FOCUS' : 'TAKE A BREAK'
 );
 
-const remainMin = computed(() =>
-  +min.value < 10 ? `0${min.value}` : min.value
-);
+const remainMin = computed(() => {
+  let fomattedMin: string | number = +min.value;
+
+  if (fomattedMin < 10) {
+    fomattedMin = `0${fomattedMin}`;
+  }
+
+  return fomattedMin;
+});
 
 const remainSec = computed(() => {
-  if (+sec.value < 10) {
-    sec.value = `0${sec.value}`;
-  } else {
-    sec.value = sec.value;
+  let fomattedSec: string | number = +sec.value;
+
+  if (fomattedSec < 10) {
+    fomattedSec = `0${fomattedSec}`;
+  } else if (fomattedSec === 60) {
+    fomattedSec = '00';
   }
 
-  if (sec.value === 60) {
-    sec.value = '00';
-  }
-
-  return sec.value;
+  return fomattedSec;
 });
 
 const remainTotalTime = computed(() => remainMin.value + ':' + remainSec.value);
