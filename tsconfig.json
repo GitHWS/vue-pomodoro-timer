@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": [],
+    "types": ["vite-plugin-pwa/vue"],
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
