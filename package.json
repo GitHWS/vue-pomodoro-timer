@@ -7,30 +7,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview",
-    "electron:start": "electron .",
-    "build:dev": "vue-tsc && vite build && vite",
-    "build:start": "vue-tsc && vite build && electron .",
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish"
+    "preview": "vite preview"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0",
     "vue": "^3.3.4"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.4.2",
-    "@electron-forge/maker-deb": "^6.4.2",
-    "@electron-forge/maker-dmg": "^6.4.2",
-    "@electron-forge/maker-rpm": "^6.4.2",
-    "@electron-forge/maker-squirrel": "^6.4.2",
-    "@electron-forge/maker-zip": "^6.4.2",
-    "@electron-forge/plugin-auto-unpack-natives": "^6.4.2",
-    "@electron-forge/publisher-github": "^6.4.2",
     "@vitejs/plugin-vue": "^4.2.3",
-    "electron": "^27.0.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vue-tsc": "^1.8.5"
