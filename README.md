@@ -17,6 +17,10 @@
 - Vue(Composition API)
 - Electron
 
+### 🌐 배포
+
+https://vue-pomodoro-timer-eight.vercel.app/
+
 ### 🚀 프로젝트 설명
 
 Vue-pomodoro-timer는 집중 시간 관리를 위한 목적으로 개발하였습니다.
