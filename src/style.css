@@ -14,12 +14,12 @@ html {
   font-size: 62.5%;
   color: var(--white-color);
   transition: background-color 0.3s;
+  overflow: hidden;
 }
 
 body {
   margin: 0;
   font-family: sans-serif;
-  -webkit-app-region: drag;
 }
 
 h1 {
@@ -33,9 +33,4 @@ button {
   border: none;
   border-radius: 0;
   cursor: pointer;
-  -webkit-app-region: no-drag;
-}
-
-input {
-  -webkit-app-region: no-drag;
 }
