@@ -180,6 +180,7 @@ watch(currentMode, (value) => {
 }
 
 .timer {
+  max-width: 500px;
   height: 100vh;
   display: flex;
   flex-direction: column;
